@@ -82,6 +82,16 @@ class CategoriaModel
         return $stmt;
     }
 
+    //metodo para consultar uma unica categoria
+    public function SelecionarUmaCategoria()
+    {
+        $sql = "SELECT `id`, `categoria`, `descricao`, `data_criacao` FROM `tb_categoria` WHERE id =:ID";
+        $stmt= Conexao()->prepare($sql);
+        $stmt->bindParam(':ID', $this->id,\PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt;
+    }
+
     //método Actualizar Categoria
     public function AlterarCategoria()
     {
@@ -95,7 +105,14 @@ class CategoriaModel
 
         $stmt->bindParam(':ID',$this->id,\PDO::PARAM_INT);
 
-        $stmt->execute();
+        if($stmt->execute())
+        {
+            $_SESSION['msg_categoria']= "<p style=color:green>Categoria Alterada com sucesso.</p>";
+        }else
+        {
+            $_SESSION['msg_categoria']= "<p style=color:red>Falha ao Alterar a Categoria.</p>";
+        }
+        
     }
 
     //Eliminar Categoria

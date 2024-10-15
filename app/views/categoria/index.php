@@ -36,7 +36,7 @@
             <td><?php echo htmlspecialchars(strip_tags($categoriaDado['descricao'])); ?></td>
 
             <td>
-                <a href="../public/index.php?pagina=alterar&id=<?php echo htmlspecialchars(strip_tags(  $categoriaDado['id'])); ?>">Alterar</a>/
+                <a href="../public/index.php?pagina=AlterarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Alterar</a>/
 
                 <a href="../public/index.php?pagina=eliminar&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Eliminar</a>/
 

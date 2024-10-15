@@ -28,8 +28,8 @@
             
             //chamada do método eliminar Categoria
             $categoriaController->apagarCategoriaController($id);
-            
-        elseif($pagina == 'alterar'):
+
+        elseif($pagina == 'AlterarCategoria'):
             echo "$pagina <br>";
             echo "id = $id";
 

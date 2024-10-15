@@ -64,18 +64,23 @@ class CategoriaController
     //Alterar Dados da categoria
     public function AlterarCategoriaController($id)
     {
-        //página categoria edit.php
-        require_once '../app/views/categoria/edit.php';
+        
+        $this->categoriaModel->setId($id);
 
-        /*//verificar se o botão foi clicado para receber os valores do formulario
-        if(isset($_POST['cadastrar_categoria']))
+        //mostrar dados do usuario selecionado
+        $categoria = $this->categoriaModel->SelecionarUmaCategoria();
+        $DadosCategoriaSelecionada = $categoria->fetchAll(\PDO::FETCH_ASSOC);
+        
+        //redereciona para página categoria/ edit.php
+        require_once '../app/views/categoria/edit.php';
+        
+        //verificar se o botão foi clicado para receber os valores do formulario
+        if(isset($_POST['alterar_categoria']))
         {
             //receber os valores vindo do formulario através do metodo POST
             $categoria = htmlspecialchars(strip_tags($_POST['categoria']));
 
             $descricao = htmlspecialchars(strip_tags($_POST['descricao']));
-
-            $this->categoriaModel->setId($id);
 
             //verificar se a variavel está vazia
             if(empty($categoria))
@@ -99,9 +104,11 @@ class CategoriaController
 
                 $this->categoriaModel->AlterarCategoria();
             }
-        }*/
+
+            //header("Location:../public/index.php?pagina=alterar");
+        }
         
-        header("Location:../public/index.php?pagina=alterar");
+        
     }
 
     //Apagar Dados da categoria
