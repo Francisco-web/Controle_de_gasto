@@ -14,11 +14,21 @@
             <th>Categoria</th>
             <th>Descrição</th>
         </tr>
+        <?php
+            
+            foreach($categorias as $categoriaDado)
+            {
+        ?>
+
         <tr>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
+            <td><?php echo htmlspecialchars(strip_tags($categoriaDado['id']));?></td>
+            <td><?php echo htmlspecialchars(strip_tags($categoriaDado['categoria'])); ?></td>
+            <td><?php echo htmlspecialchars(strip_tags($categoriaDado['descricao'])); ?></td>
+            <td><a href="">Alterar</a>/ <a href="">Eliminar</a>/ <a href="">Ver</a></td>
         </tr>
+
+        <?php }//fecho foreach ?>
+
     </table>
 </body>
 </html>
