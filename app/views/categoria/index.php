@@ -13,6 +13,7 @@
             <th>ID</th>
             <th>Categoria</th>
             <th>Descrição</th>
+            <th>Opções</th>
         </tr>
         <?php
             
@@ -22,9 +23,17 @@
 
         <tr>
             <td><?php echo htmlspecialchars(strip_tags($categoriaDado['id']));?></td>
+            
             <td><?php echo htmlspecialchars(strip_tags($categoriaDado['categoria'])); ?></td>
+            
             <td><?php echo htmlspecialchars(strip_tags($categoriaDado['descricao'])); ?></td>
-            <td><a href="">Alterar</a>/ <a href="">Eliminar</a>/ <a href="">Ver</a></td>
+
+            <td><a href="">Alterar</a>/
+
+                <a href="../../../public/index.php?pagina=eliminar&id=<?php echo $categoriaDado['id']; ?>">Eliminar</a>/
+
+                <a href="">Ver</a>
+            </td>
         </tr>
 
         <?php }//fecho foreach ?>
