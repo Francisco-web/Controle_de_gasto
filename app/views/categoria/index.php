@@ -8,6 +8,13 @@
 <body>
     <h1>Categorias Cadastradas</h1>
 
+    <?php 
+        if(isset($_SESSION['msg_categoria'])): 
+            echo $_SESSION['msg_categoria']; 
+            unset($_SESSION['msg_categoria']);
+        endif;
+    ?>
+
     <table>
         <tr>
             <th>ID</th>
@@ -28,11 +35,12 @@
             
             <td><?php echo htmlspecialchars(strip_tags($categoriaDado['descricao'])); ?></td>
 
-            <td><a href="">Alterar</a>/
+            <td>
+                <a href="../public/index.php?pagina=alterar&id=<?php echo htmlspecialchars(strip_tags(  $categoriaDado['id'])); ?>">Alterar</a>/
 
-                <a href="../public/index.php?pagina=eliminar&id=<?php echo $categoriaDado['id']; ?>">Eliminar</a>/
+                <a href="../public/index.php?pagina=eliminar&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Eliminar</a>/
 
-                <a href="">Ver</a>
+                <a href="../public/index.php?pagina=ver&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Ver</a>
             </td>
         </tr>
 
