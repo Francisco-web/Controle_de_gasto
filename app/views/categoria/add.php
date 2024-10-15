@@ -11,7 +11,7 @@
     
     <h1>Adicionar Nova Categoria</h1>
 
-    <a href="../../public/index.php?pagina=indexCategoria">Ver Categoria</a>
+    <a href="../../../public/index.php?pagina=indexCategoria">Ver Categoria</a>
     
     <br><br>
 
