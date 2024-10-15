@@ -115,7 +115,7 @@ class CategoriaModel
         
     }
 
-    //Eliminar Categoria
+    //método Eliminar Categoria
     public function ApagarCategoria()
     {
         $sql = "DELETE FROM tb_categoria WHERE id =:Id";
