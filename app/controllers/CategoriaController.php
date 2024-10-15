@@ -21,6 +21,7 @@ class CategoriaController
         $categorias = $categoria->fetchAll(\PDO::FETCH_ASSOC);
         require_once '../app/views/categoria/index.php';
     }
+
     //Inserir Categoria
     public function InserirCategoria()
     {
@@ -61,12 +62,55 @@ class CategoriaController
     } 
 
     //Alterar Dados da categoria
-    public function ApagarCategoriaController($pagina)
+    public function AlterarCategoriaController($id)
     {
-        $this->categoriaModel->setId($pagina);
+        //página categoria edit.php
+        require_once '../app/views/categoria/edit.php';
+
+        //verificar se o botão foi clicado para receber os valores do formulario
+        if(isset($_POST['cadastrar_categoria']))
+        {
+            //receber os valores vindo do formulario através do metodo POST
+            $categoria = htmlspecialchars(strip_tags($_POST['categoria']));
+
+            $descricao = htmlspecialchars(strip_tags($_POST['descricao']));
+
+            $this->categoriaModel->setId($id);
+
+            //verificar se a variavel está vazia
+            if(empty($categoria))
+            {
+                $_SESSION['msg_categoria'] = "<p style=color:red>Digite a Categoria</p> <br>";
+
+                header("location:../app/views/categoria/edit.php");
+
+            }else if(empty($descricao))
+            {
+                $_SESSION['msg_categoria'] = "<p style=color:red>Digite a Descrição</p> <br>";
+
+                header("location:../app/views/categoria/edit.php");
+
+            }else{
+                
+                //inserir os valores nos metodos de acesso a categoria model
+                $this->categoriaModel->setCategoria($categoria);
+
+                $this->categoriaModel->setDescricao($descricao);
+
+                $this->categoriaModel->AlterarCategoria();
+            }
+        }
+        
+        header("Location:../public/index.php?pagina=alterar");
+    }
+
+    //Apagar Dados da categoria
+    public function ApagarCategoriaController($id)
+    {
+        $this->categoriaModel->setId($id);
 
         $this->categoriaModel->ApagarCategoria();
 
-        header("Location:../app/views/categoria/index.php?pagina=indexCategoria");
+        header("Location:../public/index.php?pagina=indexCategoria");
     }
 }
