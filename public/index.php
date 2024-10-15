@@ -11,8 +11,10 @@ $categoriaController = new CategoriaController();
 echo"<a href='../app/views/categoria/add.php'> Categoria</a> <br>";
 
 $pagina = filter_input(INPUT_GET, 'pagina', FILTER_DEFAULT);
+$id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 
-echo $pagina;
+echo "$pagina <br>";
+
 //$categoriaController->InserirCategoria();exit;
 if($pagina == 'addCategoria'):
     
@@ -23,7 +25,11 @@ if($pagina == 'addCategoria'):
         
         //Chamada do metodo para Consultar Categoria
         $categoriaController->indexController();
+
+    elseif($pagina == 'eliminar'):
+        echo "Olá eliminiar <br>";
+        echo "id = $id";
         
-    /*elseif(is_integer($pagina)):
-        $categoriaController->apagarCategoriaController($id);*/
+        //chamada do metodo eliminar Categoria
+        $categoriaController->apagarCategoriaController($id);
 endif;
