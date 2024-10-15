@@ -13,16 +13,34 @@ class CategoriaController
         $this->categoriaModel = new CategoriaModel();
     }
 
-    //Selecionar todas Categoria
+    //método Selecionar todas Categoria
     public function indexController()
     {
         
         $categoria = $this->categoriaModel->index();
+
         $categorias = $categoria->fetchAll(\PDO::FETCH_ASSOC);
+
+        //redereciona para página categoria/ index.php
         require_once '../app/views/categoria/index.php';
     }
 
-    //Inserir Categoria
+    //método ver um unico registo.
+    public function VerUmaCategoriaController($id)
+    {
+        //função para inserir id da categoria no model da categoria 
+        $this->categoriaModel->setId($id);
+
+        //mostrar dados do usuario selecionado
+        $categoria = $this->categoriaModel->SelecionarUmaCategoria();
+
+        $DadosCategoriaSelecionada = $categoria->fetchAll(\PDO::FETCH_ASSOC);
+        
+        //redirecionar para página categoria/ edit.php
+        require_once '../app/views/categoria/ver.php';
+    }
+
+    //método Inserir Categoria
     public function InserirCategoria()
     {
         //verificar se o botão foi clicado para receber os valores do formulario
@@ -61,10 +79,10 @@ class CategoriaController
         header("location:../app/views/categoria/add.php");
     } 
 
-    //Alterar Dados da categoria
+    //método Alterar Dados da categoria
     public function AlterarCategoriaController($id)
     {
-        
+        //função para inserir id da categoria no model da categoria 
         $this->categoriaModel->setId($id);
 
         //mostrar dados do usuario selecionado
@@ -82,18 +100,26 @@ class CategoriaController
 
             $descricao = htmlspecialchars(strip_tags($_POST['descricao']));
 
+            $id = htmlspecialchars(strip_tags($_POST['id']));
+
             //verificar se a variavel está vazia
             if(empty($categoria))
             {
                 $_SESSION['msg_categoria'] = "<p style=color:red>Digite a Categoria</p> <br>";
 
-                header("location:../app/views/categoria/edit.php");
+                header("location:../public/index.php?pagina=AlterarCategoria&id=$id");
 
             }else if(empty($descricao))
             {
                 $_SESSION['msg_categoria'] = "<p style=color:red>Digite a Descrição</p> <br>";
 
-                header("location:../app/views/categoria/edit.php");
+                header("location:../public/index.php?pagina=AlterarCategoria&id=$id");
+
+            }else if(empty($id))
+            {
+                $_SESSION['msg_categoria'] = "<p style=color:red>Id não encontrado.</p> <br>";
+
+                header("location:../public/index.php?pagina=AlterarCategoria&id=$id");
 
             }else{
                 
@@ -103,15 +129,14 @@ class CategoriaController
                 $this->categoriaModel->setDescricao($descricao);
 
                 $this->categoriaModel->AlterarCategoria();
-            }
 
-            //header("Location:../public/index.php?pagina=alterar");
+                header("location:../public/index.php?pagina=AlterarCategoria&id=$id");
+            }
         }
-        
         
     }
 
-    //Apagar Dados da categoria
+    //método Apagar Dados da categoria
     public function ApagarCategoriaController($id)
     {
         $this->categoriaModel->setId($id);
