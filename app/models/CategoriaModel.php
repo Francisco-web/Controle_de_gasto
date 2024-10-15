@@ -66,10 +66,10 @@ class CategoriaModel
         //executar as instruções e inserir no banco
         if($stmt->execute())
         {
-            $_SESSION['msg_cadastrar_categoria'] = "Categoria Cadastrada com sucesso.";
+            $_SESSION['msg_cadastrar_categoria'] = "<p style=color:green>Categoria Cadastrada com sucesso.</p>";
         }else
         {
-            $_SESSION['msg_cadastrar_categoria'] = "Falha ao Cadastrar uma nova Categoria.";
+            $_SESSION['msg_cadastrar_categoria'] = "<p style=color:red>Falha ao Cadastrar uma nova Categoria.</p>";
         }
     } 
 
@@ -85,7 +85,17 @@ class CategoriaModel
     //método Actualizar Categoria
     public function AlterarCategoria()
     {
+        $sql =  "UPDATE `tb_categoria` SET `categoria`=:Categoria,`descricao`=:Descricao,`data_actualizacao`= NOW() WHERE id =:ID";
 
+        $stmt= Conexao()->prepare($sql);
+
+        $stmt->bindParam(':Categoria',$this->categoria,\PDO::PARAM_STR);
+
+        $stmt->bindParam(':Descricao',$this->descricao,\PDO::PARAM_STR);
+
+        $stmt->bindParam(':ID',$this->id,\PDO::PARAM_INT);
+
+        $stmt->execute();
     }
 
     //Eliminar Categoria
@@ -96,10 +106,10 @@ class CategoriaModel
         $stmt->bindParam(':Id', $this->id, \PDO::PARAM_INT);
         if($stmt->execute())
         {
-            $_SESSION['msg_apagar_categoria']= "Categoria Eliminada com sucesso.";
+            $_SESSION['msg_categoria']= "<p style=color:green>Categoria Eliminada com sucesso.</p>";
         }else
         {
-            $_SESSION['msg_apagar_categoria']= "Falha ao Eliminar a Categoria.";
+            $_SESSION['msg_categoria']= "<p style=color:red>Falha ao Eliminar a Categoria.</p>";
         }
     } 
 }
