@@ -67,7 +67,7 @@ class CategoriaController
         //página categoria edit.php
         require_once '../app/views/categoria/edit.php';
 
-        //verificar se o botão foi clicado para receber os valores do formulario
+        /*//verificar se o botão foi clicado para receber os valores do formulario
         if(isset($_POST['cadastrar_categoria']))
         {
             //receber os valores vindo do formulario através do metodo POST
@@ -99,7 +99,7 @@ class CategoriaController
 
                 $this->categoriaModel->AlterarCategoria();
             }
-        }
+        }*/
         
         header("Location:../public/index.php?pagina=alterar");
     }
