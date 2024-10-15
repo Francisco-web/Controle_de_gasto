@@ -23,6 +23,7 @@ if($pagina == 'addCategoria'):
         
         //Chamada do metodo para Consultar Categoria
         $categoriaController->indexController();
+        
     /*elseif(is_integer($pagina)):
         $categoriaController->apagarCategoriaController($id);*/
 endif;
