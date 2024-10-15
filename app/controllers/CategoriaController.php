@@ -35,12 +35,16 @@ class CategoriaController
             //verificar se a variavel está vazia
             if(empty($categoria))
             {
-                $_SESSION['msg_categoria'] = "<p style=color:green>Digite a Categoria</p> <br>";
-                header("location:../../public/index.php?pagina=indexCategoria");
+                $_SESSION['msg_cadastrar_categoria'] = "<p style=color:red>Digite a Categoria</p> <br>";
+
+                header("location:../app/views/categoria/add.php");
+
             }else if(empty($descricao))
             {
-                /*$_SESSION['msg_categoria'] = "<p style=color:red>Digite a Descrição</p> <br>";
-                header("location:../../public/index.php?pagina=addCategoria");*/
+                $_SESSION['msg_cadastrar_categoria'] = "<p style=color:red>Digite a Descrição</p> <br>";
+
+                header("location:../app/views/categoria/add.php");
+
             }else{
                 
                 //inserir os valores nos metodos de acesso a categoria model
@@ -48,26 +52,21 @@ class CategoriaController
 
                 $this->categoriaModel->setDescricao($descricao);
 
-                if($this->categoriaModel->CadastrarCategoria())
-                {
-                    $_SESSION['msg_categoria'] = "<p style=color:green >Nova Categoria Cadastrada com sucesso</p>";
-                    //header("location:../app/views/categoria/cadastrarCategoria.php");
-                }else
-                {
-                    $_SESSION['msg_categoria'] = "<p style=color:green >Falha ao Cadastrar Nova Categoria com sucesso</p>";
-                    //header("location:../app/views/categoria/cadastrarCategoria.php");
-                }
+                $this->categoriaModel->CadastrarCategoria();
             }
         }
 
-        header("location:../public/index.php");
+        //Se o botão cadastrar não for clicado ou depois de terminar de executar a função acima, rederciona para a página anterior
+        header("location:../app/views/categoria/add.php");
     } 
 
     //Alterar Dados da categoria
     public function ApagarCategoriaController($pagina)
     {
         $this->categoriaModel->setId($pagina);
+
         $this->categoriaModel->ApagarCategoria();
+
         header("Location:../app/views/categoria/index.php?pagina=indexCategoria");
     }
 }
