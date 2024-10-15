@@ -30,7 +30,7 @@
 
             <td><a href="">Alterar</a>/
 
-                <a href="../../../public/index.php?pagina=eliminar&id=<?php echo $categoriaDado['id']; ?>">Eliminar</a>/
+                <a href="../public/index.php?pagina=eliminar&id=<?php echo $categoriaDado['id']; ?>">Eliminar</a>/
 
                 <a href="">Ver</a>
             </td>
