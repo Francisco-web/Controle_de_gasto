@@ -1,35 +1,36 @@
 <?php
-require_once '../vendor/autoload.php';
-//require_once '../app/config/url.php';
-require_once '../app/models/CategoriaModel.php';
-require_once '../app/controllers/CategoriaController.php';
+    require_once '../vendor/autoload.php';
+    //require_once '../app/config/url.php';
+    require_once '../app/models/CategoriaModel.php';
+    require_once '../app/controllers/CategoriaController.php';
 
-use app\controllers\CategoriaController;
+    use app\controllers\CategoriaController;
 
-$categoriaController = new CategoriaController();
+    $categoriaController = new CategoriaController();
 
-echo"<a href='../app/views/categoria/add.php'> Categoria</a> <br>";
+    echo"<a href='../app/views/categoria/add.php'> Categoria</a> <br>";
 
-$pagina = filter_input(INPUT_GET, 'pagina', FILTER_DEFAULT);
-$id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
+    $pagina = filter_input(INPUT_GET, 'pagina', FILTER_DEFAULT);
+    $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 
-echo "$pagina <br>";
-
-//$categoriaController->InserirCategoria();exit;
-if($pagina == 'addCategoria'):
-    
-    //chamada do metodo Adicionar Categoria
-    $categoriaController->InserirCategoria();
-
-    elseif($pagina == 'indexCategoria'):
+    //$categoriaController->InserirCategoria();exit;
+    if($pagina == 'addCategoria'):
         
-        //Chamada do metodo para Consultar Categoria
-        $categoriaController->indexController();
+        //chamada do método Adicionar Categoria
+        $categoriaController->InserirCategoria();
 
-    elseif($pagina == 'eliminar'):
-        echo "Olá eliminiar <br>";
-        echo "id = $id";
-        
-        //chamada do metodo eliminar Categoria
-        $categoriaController->apagarCategoriaController($id);
-endif;
+        elseif($pagina == 'indexCategoria'):
+            
+            //Chamada do método para Consultar Categoria
+            $categoriaController->indexController();
+
+        elseif($pagina == 'eliminar'):
+            
+            //chamada do método eliminar Categoria
+            $categoriaController->apagarCategoriaController($id);
+        elseif($pagina == 'alterar'):
+            echo "$pagina <br>";
+            echo "id = $id";
+            //chamada do método ver Categoria
+            //$categoriaController->apagarCategoriaController($id);
+    endif;
