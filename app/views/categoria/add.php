@@ -13,18 +13,25 @@
 
     <a href="../../../public/index.php?pagina=indexCategoria">Ver Categoria</a>
     
-    <br><br>
+    <br>
 
     <?php 
         if(isset($_SESSION['msg_cadastrar_categoria']))
         {echo $_SESSION['msg_cadastrar_categoria']; unset($_SESSION['msg_cadastrar_categoria']);}
     ?>
 
-    <br><br>
+    <br>
     
     <form action="../../../public/index.php?pagina=addCategoria" method="POST">
+
         <input type="text" name="categoria" id="" placeholder="Categoria">
+        
+        <br><br>
+
         <input type="text" name="descricao" id="" placeholder="Descrição">
+
+        <br><br>
+        
         <input type="submit" name="cadastrar_categoria" Value="Guardar">
         <button type="reset">Cancelar</button>
     </form>
