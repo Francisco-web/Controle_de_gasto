@@ -1,0 +1,16 @@
+{
+    "name": "fk/controle_de_gasto",
+    "description": "Controle de gasto é um sistema que permite ter o controle da receita que entra e sai a cada mes",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Franciso André",
+            "email": "francyandre923@gmail.com"
+        }
+    ],
+    "require": {}
+}
