@@ -13,6 +13,9 @@
     $pagina = filter_input(INPUT_GET, 'pagina', FILTER_DEFAULT);
     $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 
+    echo "$pagina <br>";
+    echo "id = $id";
+
     //$categoriaController->InserirCategoria();exit;
     if($pagina == 'addCategoria'):
         
@@ -24,15 +27,18 @@
             //Chamada do método para Consultar Categoria
             $categoriaController->indexController();
 
-        elseif($pagina == 'eliminar'):
+        elseif($pagina == 'eliminarCategoria'):
             
             //chamada do método eliminar Categoria
             $categoriaController->apagarCategoriaController($id);
 
         elseif($pagina == 'AlterarCategoria'):
-            echo "$pagina <br>";
-            echo "id = $id";
 
             //chamada do método ver Categoria
             $categoriaController->AlterarCategoriaController($id);
+           
+        elseif($pagina == 'verCategoria'):
+
+            //chamada do método ver Categoria
+            $categoriaController->VerUmaCategoriaController($id);
     endif;
