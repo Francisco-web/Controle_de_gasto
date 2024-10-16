@@ -19,10 +19,20 @@
         
         endforeach;
     ?>
-    <form action="../public/index.php?pagina=AlterarCategoria&id=<?php echo $dadoCategoria['id'];?>" method="POST">
+    <form action="" method="POST">
+
+        <input type="hidden" name="id" id="" placeholder="ID" value="<?php echo $dadoCategoria['id'];?>">
+        
         <input type="text" name="categoria" id="" placeholder="Categoria" value="<?php echo $dadoCategoria['categoria'];?>">
-        <input type="text" name="descricao" id="" placeholder="Descrição" value="<?php echo $dadoCategoria ['descricao'] ?>">
+
+        <br><br>
+
+        <textarea name="descricao" id="" cols="32" rows="5"><?php echo $dadoCategoria ['descricao'] ?></textarea>
+     
+        <br><br>
+
         <input type="submit" name="alterar_categoria" Value="Guardar">
+
         <button type="submit" name ="voltar">Cancelar</button>
     </form>
 </body>
