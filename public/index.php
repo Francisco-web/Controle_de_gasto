@@ -1,6 +1,5 @@
 <?php
     require_once '../vendor/autoload.php';
-    //require_once '../app/config/url.php';
     require_once '../app/models/CategoriaModel.php';
     require_once '../app/controllers/CategoriaController.php';
 
@@ -8,37 +7,19 @@
 
     $categoriaController = new CategoriaController();
 
-    echo"<a href='../app/views/categoria/add.php'> Categoria</a> <br>";
+    include_once '../app/config/config.php';
 
-    $pagina = filter_input(INPUT_GET, 'pagina', FILTER_DEFAULT);
-    $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
+  $url = (!empty(filter_input(INPUT_GET,'url', FILTER_DEFAULT)) ? filter_input(INPUT_GET, 'url', FILTER_DEFAULT): 'HomeController');
 
-    echo "$pagina <br>";
-    echo "id = $id";
+    //converter a url de uma string para um array
+    //$urli = array_filter(explode('/',$url));
 
-    //$categoriaController->InserirCategoria();exit;
-    if($pagina == 'addCategoria'):
-        
-        //chamada do método Adicionar Categoria
-        $categoriaController->InserirCategoria();
+    //criar o caminho da página com o nome que esta na primeira posição do array criado e atribuir a extensão .php
+    var_dump($url);exit;
+    if($url == 'Categoria')
+    {
+      $categoriaController->indexController();
 
-        elseif($pagina == 'indexCategoria'):
-            
-            //Chamada do método para Consultar Categoria
-            $categoriaController->indexController();
-
-        elseif($pagina == 'eliminarCategoria'):
-            
-            //chamada do método eliminar Categoria
-            $categoriaController->apagarCategoriaController($id);
-
-        elseif($pagina == 'AlterarCategoria'):
-
-            //chamada do método ver Categoria
-            $categoriaController->AlterarCategoriaController($id);
-           
-        elseif($pagina == 'verCategoria'):
-
-            //chamada do método ver Categoria
-            $categoriaController->VerUmaCategoriaController($id);
-    endif;
+    }else {
+      false;
+    }

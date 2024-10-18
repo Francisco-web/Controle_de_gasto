@@ -1,0 +1,25 @@
+#rewreiteEngine ativa o modulo rewreiteEngine que realiza a reescrita de urls.
+RewriteEngine On
+
+#RewriteCond define uma conidção para uma regra
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+#Quando ocorrer o erro 403, rederecionar o usuario.
+
+ErrorDocument 403 http://localhost/desenvolvimento-github/Controle_de_gasto/public
+
+#bloqueiar a opção de listar os aqruivos do diretório 
+Options -Indexes
+
+#bloqueiar o acesso ao arquivo .env com o arquivo htaccess
+
+<Files .env>
+    Order allow,deny
+    Deny from allow
+</Files>

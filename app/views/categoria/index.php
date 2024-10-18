@@ -36,11 +36,11 @@
             <td><?php echo htmlspecialchars(strip_tags($categoriaDado['descricao'])); ?></td>
 
             <td>
-                <a href="../public/index.php?pagina=AlterarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Alterar</a>/
+                <a href="../public/index.php?url=AlterarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Alterar</a>/
 
-                <a href="../public/index.php?pagina=eliminarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Eliminar</a>/
+                <a href="../public/index.php?url=eliminarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Eliminar</a>/
 
-                <a href="../public/index.php?pagina=verCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Ver</a>
+                <a href="../public/index.php?url=verCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Ver</a>
             </td>
         </tr>
 

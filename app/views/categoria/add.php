@@ -11,18 +11,21 @@
     
     <h1>Adicionar Nova Categoria</h1>
 
-    <a href="../../../public/index.php?pagina=indexCategoria">Ver Categoria</a>
+    <a href="../../../public/index.php?url=Categoria">Ver Categoria</a>
     
     <br>
 
     <?php 
         if(isset($_SESSION['msg_cadastrar_categoria']))
-        {echo $_SESSION['msg_cadastrar_categoria']; unset($_SESSION['msg_cadastrar_categoria']);}
+        {
+            echo $_SESSION['msg_cadastrar_categoria']; 
+            unset($_SESSION['msg_cadastrar_categoria']);
+        }
     ?>
 
     <br>
     
-    <form action="../../../public/index.php?pagina=addCategoria" method="POST">
+    <form action="../../../public/index.php?url=addCategoria" method="POST">
 
         <input type="text" name="categoria" id="" placeholder="Categoria">
         
