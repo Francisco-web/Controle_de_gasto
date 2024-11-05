@@ -3,14 +3,11 @@ namespace app\controllers;
 
 class HomeController
 {
-
-
     public static function Inicio()
     {
-       include_once 'app/views/home.php';
+       include_once '../app/views/home.php';
     }
 
     
 }
 
-HomeController:: Inicio();

@@ -1,5 +1,3 @@
-<?php session_start();?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +9,6 @@
     
     <h1>Adicionar Nova Categoria</h1>
 
-    <a href="../../../public/index.php?url=Categoria">Ver Categoria</a>
-    
-    <br>
-
     <?php 
         if(isset($_SESSION['msg_cadastrar_categoria']))
         {
@@ -25,7 +19,7 @@
 
     <br>
     
-    <form action="../../../public/index.php?url=addCategoria" method="POST">
+    <form action="" method="POST">
 
         <input type="text" name="categoria" id="" placeholder="Categoria">
         

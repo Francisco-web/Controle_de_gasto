@@ -43,6 +43,7 @@ class CategoriaController
     //método Inserir Categoria
     public function InserirCategoria()
     {
+        require_once '../app/views/categoria/add.php';
         //verificar se o botão foi clicado para receber os valores do formulario
         if(isset($_POST['cadastrar_categoria']))
         {
@@ -72,11 +73,12 @@ class CategoriaController
                 $this->categoriaModel->setDescricao($descricao);
 
                 $this->categoriaModel->CadastrarCategoria();
+                header("location:../public/index.php?url=/Categoria/add");
             }
         }
 
         //Se o botão cadastrar não for clicado ou depois de terminar de executar a função acima, rederciona para a página anterior
-        header("location:../app/views/categoria/add.php");
+        // header("location:../app/views/categoria/add.php");
     } 
 
     //método Alterar Dados da categoria
@@ -130,7 +132,7 @@ class CategoriaController
 
                 $this->categoriaModel->AlterarCategoria();
 
-                header("location:../public/index.php?pagina=AlterarCategoria&id=$id");
+                header("location:../public/index.php?url=AlterarCategoria&id=$id");
             }
         }
         
@@ -143,6 +145,6 @@ class CategoriaController
 
         $this->categoriaModel->ApagarCategoria();
 
-        header("Location:../public/index.php?pagina=indexCategoria");
+        header("Location:../public/index.php?url=/Categoria");
     }
 }

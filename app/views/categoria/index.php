@@ -38,9 +38,9 @@
             <td>
                 <a href="../public/index.php?url=AlterarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Alterar</a>/
 
-                <a href="../public/index.php?url=eliminarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Eliminar</a>/
+                <a href="../public/index.php?url=EliminarCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Eliminar</a>/
 
-                <a href="../public/index.php?url=verCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Ver</a>
+                <a href="../public/index.php?url=VerCategoria&id=<?php echo htmlspecialchars(strip_tags($categoriaDado['id'])); ?>">Ver</a>
             </td>
         </tr>
 

@@ -1,3 +1,4 @@
 <?php
 
-echo '<brBem vindo a pagina home';
+
+echo '<br>Bem vindo a pagina home';
